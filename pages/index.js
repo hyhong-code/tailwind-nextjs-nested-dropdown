@@ -1,5 +1,50 @@
 import ChevronRight from "../components/CheveronRight";
 
+const NESTED = [
+  { name: "Item 1" },
+  { name: "Item 2" },
+  {
+    name: "Item 3",
+    sub: [{ name: "Item 3.1" }, { name: "Item 3.2" }, { name: "Item 3.3" }],
+  },
+  { name: "Item 4" },
+];
+
+const MEGA_ITEMS = [
+  { name: "Item 1" },
+  { name: "Item 2" },
+  { name: "Item 3" },
+  { name: "Item 4" },
+  { name: "Item 5" },
+];
+
+const MEGA = [
+  { title: "Feature 2", items: MEGA_ITEMS },
+  { title: "Feature 3", items: MEGA_ITEMS },
+  { title: "Feature 4", items: MEGA_ITEMS },
+];
+
+const BLOGS = [
+  {
+    img: "https://picsum.photos/400?random=1",
+    title: "Title",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, voluptate ...",
+  },
+  {
+    img: "https://picsum.photos/401?random=1",
+    title: "Title",
+    content:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, soluta ...",
+  },
+  {
+    img: "https://picsum.photos/402?random=1",
+    title: "Title",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, dolore ...",
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen font-body bg-gray-900 text-gray-200">
@@ -22,35 +67,39 @@ export default function Home() {
 
               {/* Dropdown */}
               <ul className="absolute bg-gray-700 left-0 right-0 top-10 mt-4 opacity-0 invisible group-hover:mt-0 group-hover:opacity-100 group-hover:visible transition-all ease-out duration-300">
-                <li className="flex justify-start w-full hover:bg-orange-500 p-2">
-                  <a href="#">Item 1</a>
-                </li>
-                <li className="flex justify-start w-full hover:bg-orange-500 p-2">
-                  <a href="#">Item 2</a>
-                </li>
-                <li className="group-2 relative flex justify-start w-full hover:bg-orange-500 p-2">
-                  <a href="#" className="flex w-full justify-between">
-                    Item 3 <ChevronRight className="w-4 inline-block" />
-                  </a>
+                {/* Level 1 dropdown */}
+                {NESTED.map((item, idx) => (
+                  <li
+                    className={`flex justify-start w-full hover:bg-orange-500 p-2 ${
+                      item.sub && "group-2 relative"
+                    }`}
+                    key={idx}
+                  >
+                    <a
+                      href="#"
+                      className={`${item.sub && "flex w-full justify-between"}`}
+                    >
+                      {item.name}{" "}
+                      {item.sub && (
+                        <ChevronRight className="w-4 inline-block" />
+                      )}
+                    </a>
 
-                  {/* Level two dropdown */}
-                  <ul className="absolute bg-gray-700 left-38 top-0 w-full opacity-0 invisible mt-4 group-2-hover:opacity-100 group-2-hover:mt-0 group-2-hover:visible transition-all ease-out duration-300">
-                    <li className="p-2 hover:bg-orange-500">
-                      <a href="#">Item 3.1</a>
-                    </li>
-                    <li className="p-2 hover:bg-orange-500">
-                      <a href="#">Item 3.2</a>
-                    </li>
-                    <li className="p-2 hover:bg-orange-500">
-                      <a href="#">Item 3.3</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="flex justify-start w-full hover:bg-orange-500 p-2">
-                  <a href="#">Item 4</a>
-                </li>
+                    {/* Level 2 dropdown */}
+                    {item.sub && (
+                      <ul className="absolute bg-gray-700 left-38 top-0 w-full opacity-0 invisible mt-4 group-2-hover:opacity-100 group-2-hover:mt-0 group-2-hover:visible transition-all ease-out duration-300">
+                        {item.sub.map((subItem, idx) => (
+                          <li className="p-2 hover:bg-orange-500" key={idx}>
+                            <a href="#">{subItem.name}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
               </ul>
             </li>
+
             <li className="group py-2 px-4 hover:bg-orange-500 transition ease-out duration-300">
               <a href="#">Mega Menu</a>
 
@@ -76,83 +125,26 @@ export default function Home() {
                     </section>
                   </div>
 
-                  {/* Column 2 */}
-                  <div className="">
-                    <section>
-                      <h2 className="text-2xl font-bold mb-4 text-orange-500">
-                        Featured 2
-                      </h2>
-                      <ul className="border-l border-gray-600">
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 1</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 2</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 3</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 4</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 5</a>
-                        </li>
-                      </ul>
-                    </section>
-                  </div>
-
-                  {/* Column 3 */}
-                  <div className="">
-                    <section>
-                      <h2 className="text-2xl font-bold mb-4 text-orange-500">
-                        Featured 3
-                      </h2>
-                      <ul className="border-l border-gray-600">
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 1</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 2</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 3</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 4</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 5</a>
-                        </li>
-                      </ul>
-                    </section>
-                  </div>
-
-                  {/* Column 4 */}
-                  <div className="">
-                    <section>
-                      <h2 className="text-2xl font-bold mb-4 text-orange-500">
-                        Featured 4
-                      </h2>
-                      <ul className="border-l border-gray-600">
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 1</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 2</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 3</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 4</a>
-                        </li>
-                        <li className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer ">
-                          <a href="#">Item 5</a>
-                        </li>
-                      </ul>
-                    </section>
-                  </div>
+                  {/* Column 2, 3, 4 */}
+                  {MEGA.map((section, idx) => (
+                    <div key={idx}>
+                      <section>
+                        <h2 className="text-2xl font-bold mb-4 text-orange-500">
+                          {section.title}
+                        </h2>
+                        <ul className="border-l border-gray-600">
+                          {section.items.map((item, idx) => (
+                            <li
+                              className="flex justify-center py-4 hover:bg-orange-500 cursor-pointer "
+                              key={idx}
+                            >
+                              <a href="#">{item.name}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    </div>
+                  ))}
                 </div>
               </div>
             </li>
@@ -162,63 +154,28 @@ export default function Home() {
               <a href="#">Blog</a>
 
               <div className="absolute left-0 w-full grid grid-cols-3 gap-8 bg-gray-700 p-8 top-14 invisible opacity-0 mt-4 group-hover:mt-0 group-hover:visible group-hover:opacity-100 transition-all ease-out duration-300">
-                <article className="">
-                  <div className="rounded overflow-hidden mb-4">
-                    <img
-                      src="https://picsum.photos/400?random=1"
-                      alt="Random Image"
-                      className="block w-full object-cover"
-                    />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-orange-500">
-                    Title
-                  </h2>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Earum, voluptate ...
-                  </p>
-                  <a href="#" className="text-sm text-gray-500 hover:underline">
-                    Read more.
-                  </a>
-                </article>
-                <article className="">
-                  <div className="rounded overflow-hidden mb-4">
-                    <img
-                      src="https://picsum.photos/401?random=1"
-                      alt="Random Image"
-                      className="block w-full object-cover"
-                    />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-orange-500">
-                    Title
-                  </h2>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Neque, soluta ...
-                  </p>
-                  <a href="#" className="text-sm text-gray-500 hover:underline">
-                    Read more.
-                  </a>
-                </article>
-                <article className="">
-                  <div className="rounded overflow-hidden mb-4">
-                    <img
-                      src="https://picsum.photos/402?random=1"
-                      alt="Random Image"
-                      className="block w-full object-cover"
-                    />
-                  </div>
-                  <h2 className="text-2xl font-semibold text-orange-500">
-                    Title
-                  </h2>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Consequatur, dolore ...
-                  </p>
-                  <a href="#" className="text-sm text-gray-500 hover:underline">
-                    Read more.
-                  </a>
-                </article>
+                {/* Blog 1, 2 ,3 */}
+                {BLOGS.map((blog, idx) => (
+                  <article key={idx}>
+                    <div className="rounded overflow-hidden mb-4">
+                      <img
+                        src={blog.img}
+                        alt="Random Image"
+                        className="block w-full object-cover transform scale-100 hover:scale-105 transition ease-out duration-300"
+                      />
+                    </div>
+                    <h2 className="text-2xl font-semibold text-orange-500">
+                      {blog.title}
+                    </h2>
+                    <p>{blog.content}</p>
+                    <a
+                      href="#"
+                      className="text-sm text-gray-500 hover:underline"
+                    >
+                      Read more.
+                    </a>
+                  </article>
+                ))}
               </div>
             </li>
             <li className="py-2 px-4 hover:bg-orange-500 transition ease-out duration-300">
