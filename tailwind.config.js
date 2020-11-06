@@ -26,12 +26,15 @@ module.exports = {
         20: "5rem",
         24: "6rem",
         32: "8rem",
+        36: "9rem",
+        38: "9.5rem",
         40: "10rem",
         48: "12rem",
         56: "14rem",
         64: "16rem",
       },
     },
+    namedGroups: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
   },
   variants: {
     visibility: ["responsive", "hover", "focus", "active", "group-hover"],
@@ -40,5 +43,10 @@ module.exports = {
     translate: ["responsive", "hover", "focus", "active", "group-hover"],
     inset: ["responsive", "hover", "focus", "active", "group-hover"],
   },
-  plugins: [require("tailwindcss"), require("precss"), require("autoprefixer")],
+  plugins: [
+    require("tailwindcss"),
+    require("precss"),
+    require("autoprefixer"),
+    require("tailwindcss-named-groups"),
+  ],
 };
