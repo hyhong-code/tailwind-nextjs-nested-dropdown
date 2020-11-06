@@ -56,7 +56,7 @@ export default function Home() {
 
               {/* Mega Menu */}
               <div className="absolute left-0 w-full top-14 mt-4 invisible opacity-0 group-hover:mt-0 group-hover:visible group-hover:opacity-100 transition-all ease-out duration-300">
-                <div className="grid grid-cols-4 gap-4 bg-gray-700 p-4">
+                <div className="grid grid-cols-4 gap-4 bg-gray-700 p-8">
                   {/* Column 1 */}
                   <div className="flex flex-col justify-between">
                     <section>
@@ -156,8 +156,70 @@ export default function Home() {
                 </div>
               </div>
             </li>
-            <li className="py-2 px-4 hover:bg-orange-500 transition ease-out duration-300">
+
+            {/* Blog Dropdown */}
+            <li className="group py-2 px-4 hover:bg-orange-500 transition ease-out duration-300">
               <a href="#">Blog</a>
+
+              <div className="absolute left-0 w-full grid grid-cols-3 gap-8 bg-gray-700 p-8 top-14 invisible opacity-0 mt-4 group-hover:mt-0 group-hover:visible group-hover:opacity-100 transition-all ease-out duration-300">
+                <article className="">
+                  <div className="rounded overflow-hidden mb-4">
+                    <img
+                      src="https://picsum.photos/400?random=1"
+                      alt="Random Image"
+                      className="block w-full object-cover"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-orange-500">
+                    Title
+                  </h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Earum, voluptate ...
+                  </p>
+                  <a href="#" className="text-sm text-gray-500 hover:underline">
+                    Read more.
+                  </a>
+                </article>
+                <article className="">
+                  <div className="rounded overflow-hidden mb-4">
+                    <img
+                      src="https://picsum.photos/401?random=1"
+                      alt="Random Image"
+                      className="block w-full object-cover"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-orange-500">
+                    Title
+                  </h2>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Neque, soluta ...
+                  </p>
+                  <a href="#" className="text-sm text-gray-500 hover:underline">
+                    Read more.
+                  </a>
+                </article>
+                <article className="">
+                  <div className="rounded overflow-hidden mb-4">
+                    <img
+                      src="https://picsum.photos/402?random=1"
+                      alt="Random Image"
+                      className="block w-full object-cover"
+                    />
+                  </div>
+                  <h2 className="text-2xl font-semibold text-orange-500">
+                    Title
+                  </h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Consequatur, dolore ...
+                  </p>
+                  <a href="#" className="text-sm text-gray-500 hover:underline">
+                    Read more.
+                  </a>
+                </article>
+              </div>
             </li>
             <li className="py-2 px-4 hover:bg-orange-500 transition ease-out duration-300">
               <a href="#">About</a>
